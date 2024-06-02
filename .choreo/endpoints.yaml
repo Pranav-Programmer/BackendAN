@@ -1,0 +1,16 @@
+version: v1
+endpoints:
+  - name: express-app
+    backend:
+      protocol: HTTP
+      port: 5000
+    context: /
+    policies:
+      cors:
+        enabled: true
+      rateLimit:
+        enabled: true
+        count: 100
+        timeUnit: MINUTE
+    security:
+      authType: NONE
