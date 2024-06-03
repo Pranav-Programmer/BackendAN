@@ -112,6 +112,16 @@ app.post("/movieData", async (req, res) => {
   }
 });
 
+// Post All Movie Data in Alphabetical Order
+app.post("/movieDataAlphabetical", async (req, res) => {
+  try {
+    const allMovies = await Movie.find().sort({ name: 1 }); // Sort by title in ascending order
+    res.send({ status: "ok", data: allMovies });
+  } catch (error) {
+    res.send({ status: "error", data: error });
+  }
+});
+
 // Get All Movie Data
 app.get("/allMovieData", async (req, res) => {
   try {
