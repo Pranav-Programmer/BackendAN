@@ -272,7 +272,7 @@ app.post("/topFavoritesMovie", async (req, res) => {
     const topFavouriteMovies = await User.aggregate([
       { $group: { _id: "$movieid", count: { $sum: 1 } } },
       { $sort: { count: -1 } },
-      { $limit: 3 },
+      { $limit: 4 },
     ]);
 
     const topMovieIds = topFavouriteMovies.map((movie) => movie._id);
